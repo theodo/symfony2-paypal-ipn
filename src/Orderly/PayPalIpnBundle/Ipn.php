@@ -320,7 +320,7 @@ class Ipn
                 $this->orderItems[$i]->setQuantity($this->ipnData['quantity' . $suffix]);
             if(isset($this->ipnData['mc_gross' . $suffixUnderscore]))
                 $this->orderItems[$i]->setMcGross($this->ipnData['mc_gross' . $suffixUnderscore]);
-            if(isset($this->ipnData['mc_gross' . $suffixUnderscore]) && isset($this->ipnData['quantity' . $suffix]))
+            if(isset($this->ipnData['mc_gross' . $suffixUnderscore]) && isset($this->ipnData['quantity' . $suffix]) && 0!=$this->ipnData['quantity' . $suffix])
                 $this->orderItems[$i]->setCostPerItem(floatval($this->ipnData['mc_gross' . $suffixUnderscore]) / intval($this->ipnData['quantity' . $suffix])); // Should be fine because quantity can never be 0
             
             // Update the total before the discount was applied
